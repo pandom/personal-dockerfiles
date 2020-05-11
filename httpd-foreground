@@ -1,0 +1,9 @@
+#!/bin/sh
+set -e
+
+# Apache gets grumpy about PID files pre-existing
+rm -f /usr/local/apache2/logs/httpd.pid
+TIME=$(date)
+INDEX="<html><body><h1>This Dockerfile was built at $TIME </h1></body></html>"
+echo $INDEX >> /usr/local/apache2/htdocs/index.html
+exec httpd -DFOREGROUND "$@"
