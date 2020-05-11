@@ -4,6 +4,6 @@ set -e
 # Apache gets grumpy about PID files pre-existing
 rm -f /usr/local/apache2/logs/httpd.pid
 TIME=$(date)
-INDEX="<html><body><h1> Image Details</h1><p>This new Dockerfile was built from commit $SOURCE_COMMIT. The image is $DOCKER_IMAGE and tag is $DOCKER_TAG </p></body></html>"
+INDEX="<html><body></h1>This new Dockerfile was built from commit $SOURCE_COMMIT. The image is $DOCKER_IMAGE and tag is $DOCKER_TAG</h1></body></html>"
 echo $INDEX >> /usr/local/apache2/htdocs/index.html
 exec httpd -DFOREGROUND "$@"
